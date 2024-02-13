@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+    overflow: hidden;
+}
+
+.heart-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.heart, .heart-mirror {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Черная обводка */
+    z-index: 1;
+}
+
+.heart::before,
+.heart::after,
+.heart-mirror::before,
+.heart-mirror::after {
+    content: '';
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    transform: rotate(-45deg);
+}
+
+.heart::before {
+    top: -100px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: -100px;
+}
+
+.heart-mirror::before {
+    top: 0;
+    left: 100px;
+    transform: rotate(45deg) scaleX(-1);
+}
+
+.heart-mirror::after {
+    top: -100px;
+    left: 0;
+    transform: rotate(45deg) scaleX(-1);
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: none;
+    z-index: 2;
+    background: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.content img {
+    max-width: 200%;
+    max-height: 200%; 
+}
+.hidden {
+    display: none;
+}
